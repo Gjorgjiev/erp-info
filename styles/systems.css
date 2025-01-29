@@ -1,3 +1,6 @@
+/* ================
+   CORE STYLES
+================ */
 * {
   margin: 0;
   padding: 0;
@@ -8,23 +11,26 @@ body {
   font-family: "Arial", sans-serif;
   line-height: 1.6;
   color: #333;
+  background: white;
 }
 
 .header {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: row;
-  justify-content: space-between;
   background: white;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  padding: 1rem 5%;
   position: fixed;
   width: 100%;
   top: 0;
   z-index: 1000;
 }
-.header .logo {
+.header .navbar {
+  padding: 1rem 5%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.header .navbar .logo {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -34,14 +40,36 @@ body {
   font-weight: bold;
   color: #2c3e50;
 }
-.header .logo i {
+.header .navbar .logo i {
   color: #3498db;
+  font-size: 1.8rem;
+}
+.header .navbar .nav-links {
+  display: flex;
+  gap: 2rem;
+  list-style: none;
+}
+.header .navbar .nav-links a {
+  text-decoration: none;
+  color: #333;
+  transition: color 0.3s;
+}
+.header .navbar .nav-links a:hover {
+  color: #3498db;
+}
+.header .navbar .nav-links a.active {
+  color: #3498db;
+  font-weight: bold;
+}
+.header .navbar .mobile-menu {
+  display: none;
 }
 
 .systems-hero {
   height: 60vh;
-  background: linear-gradient(rgba(44, 62, 80, 0.8), rgba(44, 62, 80, 0.8)), url("https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1950");
+  background: linear-gradient(rgba(44, 62, 80, 0.8), rgba(44, 62, 80, 0.8)), url("https://images.unsplash.com/photo-1551288049-bebda4e38f71");
   background-size: cover;
+  background-position: center;
   margin-top: 60px;
   display: flex;
   justify-content: center;
@@ -51,14 +79,16 @@ body {
 .systems-hero .hero-content {
   text-align: center;
   color: white;
+  padding: 2rem;
   max-width: 800px;
 }
 .systems-hero .hero-content h1 {
   font-size: 2.5rem;
-  margin-bottom: 1rem;
+  margin-bottom: 1.5rem;
 }
 .systems-hero .hero-content p {
   font-size: 1.2rem;
+  opacity: 0.9;
 }
 
 .erp-overview {
@@ -73,8 +103,9 @@ body {
 .erp-overview .content-wrapper h2 {
   color: #2c3e50;
   margin-bottom: 2rem;
+  font-size: 2rem;
 }
-.erp-overview .content-wrapper .overview-text {
+.erp-overview .content-wrapper p {
   font-size: 1.1rem;
   line-height: 1.8;
   max-width: 800px;
@@ -93,10 +124,11 @@ body {
 }
 .vendor-cards .vendor-card {
   background: white;
-  border-radius: 10px;
+  border-radius: 8px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   transition: all 0.3s ease;
   padding: 2rem;
+  text-align: center;
 }
 .vendor-cards .vendor-card:hover {
   transform: translateY(-5px);
@@ -111,13 +143,16 @@ body {
 }
 .vendor-cards .vendor-card .vendor-header i {
   font-size: 2.5rem;
+  color: #3498db;
   margin-bottom: 1rem;
 }
 .vendor-cards .vendor-card .vendor-header h3 {
   color: #2c3e50;
+  margin-bottom: 0.5rem;
 }
 .vendor-cards .vendor-card .vendor-features {
   list-style: none;
+  padding: 0;
   margin: 1.5rem 0;
 }
 .vendor-cards .vendor-card .vendor-features li {
@@ -131,16 +166,15 @@ body {
 }
 .vendor-cards .vendor-card .vendor-features li i {
   color: #3498db;
+  font-size: 0.9rem;
 }
 .vendor-cards .vendor-card .cta-button {
-  display: block;
-  width: 100%;
-  text-align: center;
+  display: inline-block;
+  padding: 0.8rem 1.5rem;
   background: #3498db;
   color: white;
-  padding: 0.8rem;
-  border-radius: 5px;
   text-decoration: none;
+  border-radius: 4px;
   transition: background 0.3s;
 }
 .vendor-cards .vendor-card .cta-button:hover {
@@ -155,7 +189,21 @@ body {
   margin-top: 4rem;
 }
 
+/* ================
+   RESPONSIVE DESIGN
+================ */
 @media (max-width: 768px) {
+  .header .navbar .nav-links {
+    display: none;
+  }
+  .header .navbar .mobile-menu {
+    display: block;
+    font-size: 1.5rem;
+    color: #2c3e50;
+  }
+  .systems-hero {
+    height: 50vh;
+  }
   .systems-hero .hero-content h1 {
     font-size: 2rem;
   }
@@ -164,6 +212,14 @@ body {
   }
   .vendor-cards .content-wrapper {
     grid-template-columns: 1fr;
+  }
+}
+@media (max-width: 480px) {
+  .logo {
+    font-size: 1.2rem !important;
+  }
+  .logo i {
+    font-size: 1.5rem !important;
   }
 }
 
