@@ -1,12 +1,18 @@
-// variables.scss
+// systems.scss - Final Version
+/* ================
+   CORE STYLES
+================ */
+
+// Variables
 $primary-color: #2c3e50;
 $accent-color: #3498db;
 $light-bg: #f8f9fa;
 $text-color: #333;
 $shadow-light: rgba(0,0,0,0.1);
 $shadow-medium: rgba(0,0,0,0.2);
+$border-radius: 8px;
 
-// mixins.scss
+// Mixins
 @mixin flex-center($direction: row) {
   display: flex;
   justify-content: center;
@@ -16,10 +22,9 @@ $shadow-medium: rgba(0,0,0,0.2);
 
 @mixin card-effect {
   background: white;
-  border-radius: 10px;
+  border-radius: $border-radius;
   box-shadow: 0 4px 6px $shadow-light;
   transition: all 0.3s ease;
-  padding: 2rem;
   
   &:hover {
     transform: translateY(-5px);
@@ -27,7 +32,7 @@ $shadow-medium: rgba(0,0,0,0.2);
   }
 }
 
-// systems.scss
+// Base Styles
 * {
   margin: 0;
   padding: 0;
@@ -38,55 +43,89 @@ body {
   font-family: 'Arial', sans-serif;
   line-height: 1.6;
   color: $text-color;
+  background: white;
 }
 
-// Header (same as other pages)
+// Header (Matches Previous Pages)
 .header {
-  @include flex-center(row);
-  justify-content: space-between;
   background: white;
   box-shadow: 0 2px 5px $shadow-light;
-  padding: 1rem 5%;
   position: fixed;
   width: 100%;
   top: 0;
   z-index: 1000;
 
-  .logo {
+  .navbar {
+    padding: 1rem 5%;
     @include flex-center(row);
-    gap: 0.5rem;
-    font-size: 1.5rem;
-    font-weight: bold;
-    color: $primary-color;
+    justify-content: space-between;
 
-    i { color: $accent-color; }
+    .logo {
+      @include flex-center(row);
+      gap: 0.5rem;
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: $primary-color;
+
+      i {
+        color: $accent-color;
+        font-size: 1.8rem;
+      }
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+
+      a {
+        text-decoration: none;
+        color: $text-color;
+        transition: color 0.3s;
+
+        &:hover {
+          color: $accent-color;
+        }
+        &.active {
+          color: $accent-color;
+          font-weight: bold;
+        }
+      }
+    }
+
+    .mobile-menu { display: none; }
   }
 }
 
-// Systems Hero
+// Systems Hero (Matches Home/About)
 .systems-hero {
   height: 60vh;
   background: linear-gradient(rgba(44, 62, 80, 0.8), rgba(44, 62, 80, 0.8)),
-              url('https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1950');
+              url('https://images.unsplash.com/photo-1551288049-bebda4e38f71');
   background-size: cover;
+  background-position: center;
   margin-top: 60px;
   @include flex-center(column);
 
   .hero-content {
     text-align: center;
     color: white;
+    padding: 2rem;
     max-width: 800px;
 
     h1 {
       font-size: 2.5rem;
-      margin-bottom: 1rem;
+      margin-bottom: 1.5rem;
     }
 
-    p { font-size: 1.2rem; }
+    p {
+      font-size: 1.2rem;
+      opacity: 0.9;
+    }
   }
 }
 
-// ERP Overview
+// ERP Overview Section
 .erp-overview {
   padding: 4rem 5%;
   background: $light-bg;
@@ -99,9 +138,10 @@ body {
     h2 {
       color: $primary-color;
       margin-bottom: 2rem;
+      font-size: 2rem;
     }
 
-    .overview-text {
+    p {
       font-size: 1.1rem;
       line-height: 1.8;
       max-width: 800px;
@@ -110,10 +150,10 @@ body {
   }
 }
 
-// Vendor Cards
+// Vendor Cards (Matches Feature Cards Style)
 .vendor-cards {
   padding: 4rem 5%;
-
+  
   .content-wrapper {
     max-width: 1200px;
     margin: 0 auto;
@@ -124,21 +164,28 @@ body {
 
   .vendor-card {
     @include card-effect;
-    
+    padding: 2rem;
+    text-align: center;
+
     .vendor-header {
       @include flex-center(column);
       margin-bottom: 1.5rem;
 
       i {
         font-size: 2.5rem;
+        color: $accent-color;
         margin-bottom: 1rem;
       }
 
-      h3 { color: $primary-color; }
+      h3 {
+        color: $primary-color;
+        margin-bottom: 0.5rem;
+      }
     }
 
     .vendor-features {
       list-style: none;
+      padding: 0;
       margin: 1.5rem 0;
 
       li {
@@ -147,19 +194,20 @@ body {
         margin-bottom: 0.8rem;
         font-size: 0.95rem;
 
-        i { color: $accent-color; }
+        i {
+          color: $accent-color;
+          font-size: 0.9rem;
+        }
       }
     }
 
     .cta-button {
-      display: block;
-      width: 100%;
-      text-align: center;
+      display: inline-block;
+      padding: 0.8rem 1.5rem;
       background: $accent-color;
       color: white;
-      padding: 0.8rem;
-      border-radius: 5px;
       text-decoration: none;
+      border-radius: 4px;
       transition: background 0.3s;
 
       &:hover {
@@ -169,7 +217,7 @@ body {
   }
 }
 
-// Footer
+// Footer (Matches Previous Pages)
 .footer {
   background: $primary-color;
   color: white;
@@ -178,14 +226,35 @@ body {
   margin-top: 4rem;
 }
 
-// Responsive Design
+/* ================
+   RESPONSIVE DESIGN
+================ */
 @media (max-width: 768px) {
-  .systems-hero .hero-content {
-    h1 { font-size: 2rem; }
-    p { font-size: 1rem; }
+  .header .navbar {
+    .nav-links { display: none; }
+    .mobile-menu {
+      display: block;
+      font-size: 1.5rem;
+      color: $primary-color;
+    }
+  }
+
+  .systems-hero {
+    height: 50vh;
+    .hero-content {
+      h1 { font-size: 2rem; }
+      p { font-size: 1rem; }
+    }
   }
 
   .vendor-cards .content-wrapper {
     grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .logo {
+    font-size: 1.2rem !important;
+    i { font-size: 1.5rem !important; }
   }
 }
