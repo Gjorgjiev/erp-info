@@ -1,0 +1,108 @@
+<!-- about.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About ERP Hub - Enterprise Resource Planning Expertise</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="styles/about.css">
+</head>
+<body>
+    <!-- Header (Same as Homepage) -->
+    <header class="header">
+        <nav class="navbar">
+            <div class="logo">
+                <i class="fas fa-cubes"></i>
+                <span>ERP Hub</span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html" class="active">About</a></li>
+                <li><a href="#systems">ERP Systems</a></li>
+                <li><a href="#blog">Blog</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            <div class="mobile-menu">
+                <i class="fas fa-bars"></i>
+            </div>
+        </nav>
+    </header>
+
+    <!-- About Hero Section -->
+    <section class="about-hero">
+        <div class="hero-content">
+            <h1>Empowering Businesses Through ERP Expertise</h1>
+            <p>Your trusted resource for Enterprise Resource Planning knowledge since 2023</p>
+        </div>
+    </section>
+
+    <!-- About Content Section -->
+    <section class="about-content">
+        <div class="content-wrapper">
+            <!-- Mission Card -->
+            <div class="about-card mission-card">
+                <i class="fas fa-bullseye"></i>
+                <h2>Our Mission</h2>
+                <p>To demystify ERP systems and provide actionable insights to each individual and understanding of ERP systems</p>
+            </div>
+
+            <!-- Values Accordion -->
+            <div class="values-accordion">
+                <div class="accordion-item active">
+                    <div class="accordion-header">
+                        <h3><i class="fas fa-hand-holding-heart"></i> Core Values</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="accordion-content">
+                        <ul>
+                            <li>Transparency in Information</li>
+                            <li>User-Focused Design</li>
+                            <li>Continuous Learning</li>
+                            <li>Technology Integrity</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <div class="accordion-header">
+                        <h3><i class="fas fa-users"></i> Our Team</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="accordion-content">
+                        <div class="team-grid">
+                            <div class="team-member">
+                                <img src="C:\Users\dare-\Desktop\business-professional-icon.png" alt="Team Member">
+                                <h4>Darko Gjorgjiev</h4>
+                                <p>ERP Developer</p>
+                            </div>
+                             
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer (Same as Homepage) -->
+    <footer class="footer">
+        <p>&copy; 2025 ERP Hub. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // Accordion functionality
+        document.querySelectorAll('.accordion-header').forEach(header => {
+            header.addEventListener('click', () => {
+                const accordionItem = header.parentElement;
+                const accordionContent = header.nextElementSibling;
+                
+                accordionItem.classList.toggle('active');
+                accordionContent.style.maxHeight = 
+                    accordionItem.classList.contains('active') 
+                    ? accordionContent.scrollHeight + "px" 
+                    : null;
+            });
+        });
+    </script>
+</body>
+</html>
